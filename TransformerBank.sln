@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformerBank", "TransformerBank\TransformerBank.csproj", "{DFEC4FB5-5A4D-4189-97BD-A3CE26470357}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM", "TransformerBank\ATM.csproj", "{DFEC4FB5-5A4D-4189-97BD-A3CE26470357}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankSystem", "BankSystem\BankSystem.csproj", "{FE73468D-94E6-4E84-815F-495B4720F266}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Controls\Controls.csproj", "{125D687E-7153-4C25-9D39-FA3FD7F1145A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{30BA08C2-845E-4062-AD82-153977BB26E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{DFEC4FB5-5A4D-4189-97BD-A3CE26470357}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFEC4FB5-5A4D-4189-97BD-A3CE26470357}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFEC4FB5-5A4D-4189-97BD-A3CE26470357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE73468D-94E6-4E84-815F-495B4720F266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE73468D-94E6-4E84-815F-495B4720F266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE73468D-94E6-4E84-815F-495B4720F266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE73468D-94E6-4E84-815F-495B4720F266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{125D687E-7153-4C25-9D39-FA3FD7F1145A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125D687E-7153-4C25-9D39-FA3FD7F1145A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125D687E-7153-4C25-9D39-FA3FD7F1145A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125D687E-7153-4C25-9D39-FA3FD7F1145A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30BA08C2-845E-4062-AD82-153977BB26E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30BA08C2-845E-4062-AD82-153977BB26E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30BA08C2-845E-4062-AD82-153977BB26E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30BA08C2-845E-4062-AD82-153977BB26E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
