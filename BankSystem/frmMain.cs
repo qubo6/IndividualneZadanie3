@@ -16,5 +16,37 @@ namespace BankSystem
         {
             InitializeComponent();
         }
+
+        private void cmdNewClient_Click(object sender, EventArgs e)
+        {
+            using (frmClient newForm = new frmClient())
+            {
+                newForm.ShowDialog();
+            }
+        }
+
+        private void cmdNewAccount_Click(object sender, EventArgs e)
+        {
+            using (frmAccount newForm = new frmAccount())
+            {
+                newForm.ShowDialog();
+            }
+        }
+
+        private void cmdAllAccounts_Click(object sender, EventArgs e)
+        {
+            using (frmAccounts newForm = new frmAccounts())
+            {
+                newForm.Show();
+            }
+        }
+
+        private void cmdAllTransactions_Click(object sender, EventArgs e)
+        {
+            using (frmTransactions newForm = new frmTransactions())
+            {
+                newForm.Show();
+            }
+        }
     }
 }
