@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace BankSystem
 {
-    public partial class frmAccounts : Form
+    public partial class frmTransaction : Form
     {
-        public frmAccounts()
+        public frmTransaction()
         {
             InitializeComponent();
-        }
-
-        private void cmdManageAccount_Click(object sender, EventArgs e)
-        {
-            using (frmClientManagement newForm = new frmClientManagement())
-            {
-                newForm.ShowDialog();
-            }
         }
     }
 }

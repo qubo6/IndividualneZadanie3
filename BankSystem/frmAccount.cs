@@ -28,13 +28,5 @@ namespace BankSystem
         {
             InitializeComponent();
         }
-
-        private void btnAddClient_Click(object sender, EventArgs e)
-        {
-            using (frmClient newForm = new frmClient())
-            {
-                newForm.ShowDialog();
-            }
-        }
     }
 }

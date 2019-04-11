@@ -17,9 +17,9 @@ namespace BankSystem
             InitializeComponent();
         }
 
-        private void cmdNewClient_Click(object sender, EventArgs e)
+        private void cmdFindClient_Click(object sender, EventArgs e)
         {
-            using (frmClient newForm = new frmClient())
+            using (frmClientManagement newForm = new frmClientManagement())
             {
                 newForm.ShowDialog();
             }
@@ -37,7 +37,7 @@ namespace BankSystem
         {
             using (frmAccounts newForm = new frmAccounts())
             {
-                newForm.Show();
+                newForm.ShowDialog();
             }
         }
 
@@ -45,7 +45,7 @@ namespace BankSystem
         {
             using (frmTransactions newForm = new frmTransactions())
             {
-                newForm.Show();
+                newForm.ShowDialog();
             }
         }
     }

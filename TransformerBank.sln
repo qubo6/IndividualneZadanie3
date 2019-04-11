@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM", "TransformerBank\ATM.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankSystem", "BankSystem\BankSystem.csproj", "{FE73468D-94E6-4E84-815F-495B4720F266}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Controls\Controls.csproj", "{125D687E-7153-4C25-9D39-FA3FD7F1145A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "Controls\Support.csproj", "{125D687E-7153-4C25-9D39-FA3FD7F1145A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{30BA08C2-845E-4062-AD82-153977BB26E9}"
 EndProject
