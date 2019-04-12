@@ -39,6 +39,7 @@ namespace BankSystem
         {
             randomClient = new LogicAccount().RandomClient();
             randomAddress = new LogicAccount().RandomAddress();
+
             txtName.Text = randomClient.FirstName;
             txtSurname.Text = randomClient.LastName;
             txtIdentityCard.Text = randomClient.IdentityCard;
