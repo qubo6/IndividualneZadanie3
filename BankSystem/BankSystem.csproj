@@ -82,6 +82,8 @@
     <Compile Include="frmTransactions.Designer.cs">
       <DependentUpon>frmTransactions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logic.cs" />
+    <Compile Include="LogicAccount.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAccount.resx">

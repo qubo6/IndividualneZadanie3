@@ -12,16 +12,22 @@ namespace BankSystem
 {
     public partial class frmMain : Form
     {
+
+        Logic _logic = new Logic();
         public frmMain()
         {
             InitializeComponent();
         }
 
+
         private void cmdFindClient_Click(object sender, EventArgs e)
         {
-            using (frmClientManagement newForm = new frmClientManagement())
+            _logic.FilterTxt = txtFilter.Text;
+            using (frmClientManagement newForm = new frmClientManagement(_logic))
             {
+                
                 newForm.ShowDialog();
+                
             }
         }
 
@@ -30,6 +36,7 @@ namespace BankSystem
             using (frmAccount newForm = new frmAccount())
             {
                 newForm.ShowDialog();
+                
             }
         }
 

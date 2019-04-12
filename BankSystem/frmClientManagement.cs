@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,27 @@ namespace BankSystem
 {
     public partial class frmClientManagement : Form
     {
-
+        Logic _logic;
+        RepositoryClient _repositoryClient = new RepositoryClient();
         /// <summary>
         /// Backup, do not really use :)
         /// </summary>
-        public frmClientManagement() : this(0) { }
+        public frmClientManagement(Logic logic)
+        {
+            _logic = logic;
+            InitializeComponent();
+            // lblClientInfo.Text = _repositoryClient.SelectClientInfo(_logic.FilterTxt);
+            dgwClientInfo.DataSource = _repositoryClient.ClientBasicInfo(_logic.FilterTxt);
+            dgwClientInfo.DataMember = "Client";
+            dgwCardInfo.DataSource = _repositoryClient.ClientCard(_logic.FilterTxt);
+            dgwCardInfo.DataMember = "Client";
+        }
+
+        //public frmClientManagement(Logic logic) : this(0)
+        //{
+        //    _logic = logic;
+        //}
+        //public frmClientManagement() : this(0) { }
 
         /// <summary>
         /// Used when viewing/updating existing client.
@@ -25,7 +42,14 @@ namespace BankSystem
         public frmClientManagement(int clientId)
         {
             InitializeComponent();
+            //lblClientInfo.Text = _repositoryClient.SelectClientInfo(_logic.FilterTxt);
         }
+
+        //public frmClientManagement()
+        //{
+        //    InitializeComponent();
+        //    lblClientInfo.Text = _repositoryClient.SelectClientInfo(_logic.FilterTxt);
+        //}
 
         private void cmdUpdate_Click(object sender, EventArgs e)
         {
