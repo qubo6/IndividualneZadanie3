@@ -11,7 +11,8 @@ namespace Data.Repositories
 {
     public class RepositoryClient
     {
-        const string connString = @"SERVER = TRANSFORMER2\SQLEXPRESS2016; DATABASE = ISLAMBANK; Trusted_Connection = true ";
+        //const string connString = @"SERVER = TRANSFORMER2\SQLEXPRESS2016; DATABASE = ISLAMBANK; Trusted_Connection = true ";
+        const string connString = @"SERVER = KUBO\SQLEXPRESS; DATABASE = ISLAMBANK; Trusted_Connection = true ";
         public DataSet ClientBasicInfo(string CardIdentity)
         {
             try
@@ -19,7 +20,7 @@ namespace Data.Repositories
                 using (SqlConnection connection = new SqlConnection(connString))
                 {
                     connection.Open();
-                    string sqlQuery = @"select First_Name as Name, Last_Name as Surname, IBAN, Validity as 'Card Validity',Open_date as 'Open date' , Balance from ((CLIENT as C left join [ADDRESS] as A on C.Address_id=A.Id)
+                    string sqlQuery = @"select ACCOUNT.id , First_Name as Name, Last_Name as Surname, IBAN, Validity_from as 'Card Validity',Open_date as 'Open date' , Balance from ((CLIENT as C left join [ADDRESS] as A on C.Address_id=A.Id)
                         left join ACCOUNT on ACCOUNT.Client_id=c.Id) 
                         left join [dbo].[CARD] on [dbo].[CARD].[Account_id]=ACCOUNT.Id where [Identity_card]= @IdentityCard ";
                     using( SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))

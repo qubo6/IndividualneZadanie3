@@ -39,11 +39,6 @@ namespace BankSystem
             }
             return false;
         }
-        //public int CreateClient(ModelClient modelClient, int addressId)
-        //{
-        //    return new RepositoryClient().AddClient(modelClient, CreateAddress(LogicAccount.));
-        //}
-
 
     }
 }

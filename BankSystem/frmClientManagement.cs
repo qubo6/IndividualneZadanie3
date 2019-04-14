@@ -22,11 +22,12 @@ namespace BankSystem
         {
             _logic = logic;
             InitializeComponent();
-            // lblClientInfo.Text = _repositoryClient.SelectClientInfo(_logic.FilterTxt);
             dgwClientInfo.DataSource = _repositoryClient.ClientBasicInfo(_logic.FilterTxt);
             dgwClientInfo.DataMember = "Client";
             dgwCardInfo.DataSource = _repositoryClient.ClientCard(_logic.FilterTxt);
             dgwCardInfo.DataMember = "Client";
+            dgwClientInfo.Columns[0].Visible = false;
+
         }
 
         //public frmClientManagement(Logic logic) : this(0)
@@ -96,6 +97,14 @@ namespace BankSystem
             if (MessageBox.Show("Hodor?", "Hodor!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 DialogResult = DialogResult.OK;
+            }
+        }
+
+        private void btnNewCard_Click(object sender, EventArgs e)
+        {
+            using (frmNew_Card newForm = new frmNew_Card(int.Parse(dgwClientInfo.Rows[0].Cells[0].Value.ToString())))
+            {
+                newForm.ShowDialog();
             }
         }
     }

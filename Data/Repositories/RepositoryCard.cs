@@ -9,11 +9,10 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class RepositoryAccount
+    public class RepositoryCard
     {
-        //const string connString = @"SERVER = TRANSFORMER2\SQLEXPRESS2016; DATABASE = ISLAMBANK; Trusted_Connection = true ";
         const string connString = @"SERVER = KUBO\SQLEXPRESS; DATABASE = ISLAMBANK; Trusted_Connection = true ";
-        public bool AddAccount(ModelAccounts modelAccounts, int clientId)
+        public bool AddCard(ModelCard modelCard, int accountId)
         {
             try
             {
@@ -22,12 +21,15 @@ namespace Data.Repositories
                     connection.Open();
                     using (SqlCommand command = connection.CreateCommand())
                     {
-                        string sqlQuery = @"insert into Account ([IBAN] ,[Open_date] ,[Client_id]) 
-                                values(@iban, @open, @clientId)";
+                        string sqlQuery = @"insert into [CARD] (Card_Number,pin,Validity_from, Validity_until,Account_id) 
+                                        values(@cardNumber, @pin, @validty_from, @validty_until, @account_id)
+                                            ";
                         SqlCommand commandAdd = new SqlCommand(sqlQuery, connection);
-                        commandAdd.Parameters.Add("@iban", SqlDbType.NVarChar).Value = modelAccounts.IBAN;
-                        commandAdd.Parameters.Add("@open", SqlDbType.DateTime).Value = modelAccounts.OpenDate;
-                        commandAdd.Parameters.Add("@clientId", SqlDbType.Int).Value = clientId;
+                        commandAdd.Parameters.Add("@cardNumber", SqlDbType.NVarChar).Value = modelCard.CardNumber;
+                        commandAdd.Parameters.Add("@pin", SqlDbType.Char).Value = modelCard.Pin;
+                        commandAdd.Parameters.Add("@validty_from", SqlDbType.DateTime).Value = modelCard.Validity_from;
+                        commandAdd.Parameters.Add("@validty_until", SqlDbType.DateTime).Value = modelCard.Validity_until;
+                        commandAdd.Parameters.Add("@account_id", SqlDbType.Int).Value = accountId;
 
                         if (commandAdd.ExecuteNonQuery() > 0)
                         {

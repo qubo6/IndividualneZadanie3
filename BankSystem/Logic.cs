@@ -9,6 +9,7 @@ namespace BankSystem
     public class Logic
     {
         public string FilterTxt { get; set; }
+        public int AccountId { get; set; }
     }
 
 }

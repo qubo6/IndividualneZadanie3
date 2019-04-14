@@ -44,6 +44,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dgwClientInfo = new System.Windows.Forms.DataGridView();
             this.dgwCardInfo = new System.Windows.Forms.DataGridView();
+            this.btnNewCard = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwClientInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwCardInfo)).BeginInit();
             this.SuspendLayout();
@@ -126,9 +127,9 @@
             this.label2.BackColor = System.Drawing.Color.DarkMagenta;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(749, 249);
+            this.label2.Location = new System.Drawing.Point(749, 337);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 149);
+            this.label2.Size = new System.Drawing.Size(190, 61);
             this.label2.TabIndex = 11;
             this.label2.Text = "Niekde v tomto okne bude grid s platobnými kartami priradenými k účtu.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -221,11 +222,22 @@
             this.dgwCardInfo.Size = new System.Drawing.Size(212, 150);
             this.dgwCardInfo.TabIndex = 20;
             // 
+            // btnNewCard
+            // 
+            this.btnNewCard.Location = new System.Drawing.Point(762, 199);
+            this.btnNewCard.Name = "btnNewCard";
+            this.btnNewCard.Size = new System.Drawing.Size(75, 23);
+            this.btnNewCard.TabIndex = 21;
+            this.btnNewCard.Text = "New Card";
+            this.btnNewCard.UseVisualStyleBackColor = true;
+            this.btnNewCard.Click += new System.EventHandler(this.btnNewCard_Click);
+            // 
             // frmClientManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1065, 410);
+            this.Controls.Add(this.btnNewCard);
             this.Controls.Add(this.dgwCardInfo);
             this.Controls.Add(this.dgwClientInfo);
             this.Controls.Add(this.label8);
@@ -269,5 +281,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgwClientInfo;
         private System.Windows.Forms.DataGridView dgwCardInfo;
+        private System.Windows.Forms.Button btnNewCard;
     }
 }
