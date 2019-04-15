@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Debit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Debit.Designer.cs">
+      <DependentUpon>Debit.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmClientManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,7 +90,14 @@
     </Compile>
     <Compile Include="Logic.cs" />
     <Compile Include="LogicAccount.cs" />
+    <Compile Include="LogicAllAcounts.cs" />
     <Compile Include="LogicCard.cs" />
+    <Compile Include="LogicDebit.cs" />
+    <Compile Include="LogicDeposit.cs" />
+    <Compile Include="LogicManagment.cs" />
+    <Compile Include="LogicOverView.cs" />
+    <Compile Include="LogicTransaction.cs" />
+    <Compile Include="LogicWithdrawal.cs" />
     <Compile Include="New Card.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +106,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Debit.resx">
+      <DependentUpon>Debit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAccount.resx">
       <DependentUpon>frmAccount.cs</DependentUpon>
     </EmbeddedResource>

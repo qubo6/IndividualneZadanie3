@@ -55,6 +55,7 @@
     <Compile Include="Repositories\RepositoryAddress.cs" />
     <Compile Include="Repositories\RepositoryCard.cs" />
     <Compile Include="Repositories\RepositoryClient.cs" />
+    <Compile Include="Repositories\RepositoryTransaction.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controls\Support.csproj">

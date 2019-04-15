@@ -16,5 +16,13 @@ namespace TransformerBank
         {
             InitializeComponent();
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            using (frmLogin newForm = new frmLogin())
+            {
+                newForm.ShowDialog();
+            }
+        }
     }
 }

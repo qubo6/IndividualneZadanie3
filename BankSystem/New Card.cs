@@ -29,6 +29,7 @@ namespace BankSystem
             //MessageBox.Show(newCard.Validity_from.ToString() + ' '+ newCard.Validity_until.ToString() + ' '+ newCard.CardNumber.ToString());
             newCard.Pin = (txtPin.Text).ToCharArray();
             logicCard.CreateCard(newCard, accountId);
+            Close();
         }
     }
 }

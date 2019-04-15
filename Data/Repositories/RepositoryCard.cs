@@ -11,7 +11,8 @@ namespace Data.Repositories
 {
     public class RepositoryCard
     {
-        const string connString = @"SERVER = KUBO\SQLEXPRESS; DATABASE = ISLAMBANK; Trusted_Connection = true ";
+        const string connString = @"SERVER = TRANSFORMER2\SQLEXPRESS2016; DATABASE = ISLAMBANK; Trusted_Connection = true ";
+        //const string connString = @"SERVER = KUBO\SQLEXPRESS; DATABASE = ISLAMBANK; Trusted_Connection = true ";
         public bool AddCard(ModelCard modelCard, int accountId)
         {
             try
@@ -45,6 +46,158 @@ namespace Data.Repositories
             }
             return false;
         }
+        public bool CheckCard(int Login, string Pin)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        string sqlQuery = "select * from [CARD]";
+                        SqlCommand commandSlct = new SqlCommand(sqlQuery, connection);
+                        using (SqlDataReader reader = commandSlct.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                if (reader.GetInt32(0).Equals(Login))
+                                {
+                                    if (reader.GetString(1).Equals(Pin))
+                                    {
+                                        if (!reader.GetBoolean(5))
+                                        {
+                                            return true;
+                                        }
+                                        else
+                                        {
+                                            return false;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        return false;
+                                    }
+                                }
+                                else
+                                {
+                                    return false;
+                                }
 
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return false;
+        }
+        public bool BlockCard( int cardId)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        string sqlQuery = @" update [CARD]  set blocked= 1 where id=@cardId";
+                        SqlCommand commandAdd = new SqlCommand(sqlQuery, connection);
+                        commandAdd.Parameters.Add("@cardId", SqlDbType.Int).Value = cardId;
+                        if (commandAdd.ExecuteNonQuery() > 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return false;
+        }
+        public bool UnblockCard(int cardId)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        string sqlQuery = @" update [CARD]  set blocked= 0 where id=@cardId";
+                        SqlCommand commandAdd = new SqlCommand(sqlQuery, connection);
+                        commandAdd.Parameters.Add("@cardId", SqlDbType.Int).Value = cardId;
+                        if (commandAdd.ExecuteNonQuery() > 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return false;
+        }
+        public bool CheckCurrentBalance(int Login, string Pin)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        string sqlQuery = "select * from [CARD]";
+                        SqlCommand commandSlct = new SqlCommand(sqlQuery, connection);
+                        using (SqlDataReader reader = commandSlct.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                if (reader.GetInt32(0).Equals(Login))
+                                {
+                                    if (reader.GetString(1).Equals(Pin))
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        return false;
+                                    }
+                                }
+                                else
+                                {
+                                    return false;
+                                }
+
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return false;
+        }
     }
+
 }
+

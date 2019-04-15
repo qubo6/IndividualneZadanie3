@@ -12,17 +12,20 @@ namespace BankSystem
 {
     public partial class frmAccounts : Form
     {
+        private LogicAllAcounts _logicAllAcounts = new LogicAllAcounts();
         public frmAccounts()
         {
             InitializeComponent();
+            dgwAll.DataSource = _logicAllAcounts.AllAccounts();
+            dgwAll.DataMember = "account";
         }
 
         private void cmdManageAccount_Click(object sender, EventArgs e)
         {
-            //using (frmClientManagement newForm = new frmClientManagement())
-            //{
-            //    newForm.ShowDialog();
-            //}
+            using (frmClientManagement newForm = new frmClientManagement(dgwAll.CurrentRow.Cells[1].Value.ToString()))
+            {
+                newForm.ShowDialog();
+            }
         }
     }
 }

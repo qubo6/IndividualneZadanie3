@@ -39,6 +39,13 @@ namespace BankSystem
             }
             return false;
         }
-
+        public ModelClient clientForUpdate(int id)
+        {
+            return new RepositoryClient().SetForUpdate(id);
+        }
+        public ModelAddress addressForUpdate(int id)
+        {
+            return new RepositoryAddress().SetForUpdate(clientForUpdate(id).AddressId);
+        }
     }
 }

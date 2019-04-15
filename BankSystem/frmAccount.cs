@@ -30,6 +30,14 @@ namespace BankSystem
         public frmAccount(int clientId)
         {
             InitializeComponent();
+            txtName.Text = logicAccount.clientForUpdate(clientId).FirstName;
+            txtSurname.Text = logicAccount.clientForUpdate(clientId).LastName;
+            txtIdentityCard.Text = logicAccount.clientForUpdate(clientId).IdentityCard;
+            txtPhone.Text = logicAccount.clientForUpdate(clientId).PhoneNumber;
+            txtMail.Text = logicAccount.clientForUpdate(clientId).Email;
+            txtCity.Text = logicAccount.addressForUpdate(clientId).City;
+            txtStreet.Text = logicAccount.addressForUpdate(clientId).Street;
+            txtPostCode.Text = logicAccount.addressForUpdate(clientId).PostalCode;
         }
         ModelClient randomClient = new ModelClient();
         ModelAddress randomAddress = new ModelAddress();
