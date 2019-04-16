@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class RepositoryTransaction
+    public class RepositoryTransaction:RepositoryBase
     {
-        const string connString = @"SERVER = TRANSFORMER2\SQLEXPRESS2016; DATABASE = ISLAMBANK; Trusted_Connection = true ";
+        //const string connString = @"SERVER = TRANSFORMER2\SQLEXPRESS2016; DATABASE = ISLAMBANK; Trusted_Connection = true ";
         public bool TransactionFromAtm( int clientId, decimal amount)
         {
             try
@@ -38,7 +38,6 @@ namespace Data.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
             return false;

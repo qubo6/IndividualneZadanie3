@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class RepositoryClient
+    public class RepositoryClient:RepositoryBase
     {
-        const string connString = @"SERVER = TRANSFORMER2\SQLEXPRESS2016; DATABASE = ISLAMBANK; Trusted_Connection = true ";
+        //const string connString = @"SERVER = TRANSFORMER2\SQLEXPRESS2016; DATABASE = ISLAMBANK; Trusted_Connection = true ";
         //const string connString = @"SERVER = KUBO\SQLEXPRESS; DATABASE = ISLAMBANK; Trusted_Connection = true ";
         public DataSet ClientBasicInfo(string CardIdentity)
         {
@@ -72,10 +72,11 @@ namespace Data.Repositories
                     connection.Open();
                     string sqlQuery = @"select [CARD].id ,Card_Number as 'Card Number', validity_until as 'Validity', Blocked from ((CLIENT as C left join [ADDRESS] as A on C.Address_id=A.Id)
                         left join ACCOUNT on ACCOUNT.Client_id=c.Id) 
-                        left join [dbo].[CARD] on [dbo].[CARD].[Account_id]=ACCOUNT.Id where [Identity_card]= @IdentityCard ";
+                        left join [dbo].[CARD] on [dbo].[CARD].[Account_id]=ACCOUNT.Id where ([Identity_card]= @IdentityCard or account.iban =@Iban) ";
                     using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
                     {
                         adapter.SelectCommand.Parameters.Add("@IdentityCard", SqlDbType.NVarChar).Value = CardIdentity;
+                        adapter.SelectCommand.Parameters.Add("@Iban", SqlDbType.NVarChar).Value = CardIdentity;
                         DataSet ds = new DataSet();
                         adapter.Fill(ds, "Client");
                         return ds;

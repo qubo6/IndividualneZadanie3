@@ -16,11 +16,11 @@ namespace BankSystem
         private LogicDeposit _logicDeposit = new LogicDeposit();
         private LogicWithdrawal _logicWithdrawal = new LogicWithdrawal();
         private LogicTransaction _logicTransaction = new LogicTransaction();
-        private int accountId;
+        private int _accountId;
         public frmTransaction(int type, int accId)    //deposit-vklad
         {
             InitializeComponent();
-            this.accountId = accId;
+            this._accountId = accId;
             if (type == 1)
             {
                 btnWithdrawal.Visible = false;
@@ -74,7 +74,7 @@ namespace BankSystem
         {
             dgwRecepient.DataSource = _logicTransaction.Recepient(txtIban.Text);
             dgwRecepient.DataMember = "ACCOUNT";
-            if (dgwRecepient.Rows.Count==0)
+            if (dgwRecepient.Rows.Count == 0)
             {
                 MessageBox.Show("This IBAN does not exist");
             }
@@ -87,19 +87,19 @@ namespace BankSystem
         }
         public void FillGridSender()
         {
-            dgwSender.DataSource = _logicManagment.ClientAccount(accountId);
+            dgwSender.DataSource = _logicManagment.ClientAccount(_accountId);
             dgwSender.DataMember = "ACCOUNT";
         }
         private void FillGridDeposit()
         {
             dgwSender.DataSource = _logicManagment.BankUser();
-            dgwRecepient.DataSource = _logicManagment.ClientAccount(accountId);
+            dgwRecepient.DataSource = _logicManagment.ClientAccount(_accountId);
             dgwRecepient.DataMember = "ACCOUNT";
             dgwSender.DataMember = "ACCOUNT";
         }
         private void FillGridWithdrawal()
         {
-            dgwSender.DataSource = _logicManagment.ClientAccount(accountId);
+            dgwSender.DataSource = _logicManagment.ClientAccount(_accountId);
             dgwRecepient.DataSource = _logicManagment.BankUser();
             dgwRecepient.DataMember = "ACCOUNT";
             dgwSender.DataMember = "ACCOUNT";
@@ -112,18 +112,27 @@ namespace BankSystem
 
         private void btnDeposit_Click(object sender, EventArgs e)
         {
-            _logicDeposit.BankDeposit(int.Parse(ntbAmount.Text.ToString()));
-            _logicDeposit.ClientDeposit(accountId, int.Parse(ntbAmount.Text.ToString()));
-            _logicDeposit.TransactionDeposit(accountId, int.Parse(ntbAmount.Text.ToString()));
+            _logicDeposit.BankDeposit(decimal.Parse(ntbAmount.Text.ToString()));
+            _logicDeposit.ClientDeposit(_accountId, decimal.Parse(ntbAmount.Text.ToString()));
+            _logicDeposit.TransactionDeposit(_accountId, decimal.Parse(ntbAmount.Text.ToString()));
             FillGridDeposit();
         }
 
         private void btnWithdrawal_Click(object sender, EventArgs e)
         {
-            _logicWithdrawal.BankWithdrawal(int.Parse(ntbAmount.Text.ToString()));
-            _logicWithdrawal.ClientWithdrawal(accountId, int.Parse(ntbAmount.Text.ToString()));
-            _logicWithdrawal.TransactionWithdrawal(accountId, int.Parse(ntbAmount.Text.ToString()));
-            FillGridWithdrawal();
+            if (_logicManagment.MaxAmounth(_accountId)>=decimal.Parse(ntbAmount.Text.ToString()))
+            {
+                _logicWithdrawal.BankWithdrawal(decimal.Parse(ntbAmount.Text.ToString()));
+                _logicWithdrawal.ClientWithdrawal(_accountId, decimal.Parse(ntbAmount.Text.ToString()));
+                _logicWithdrawal.TransactionWithdrawal(_accountId, decimal.Parse(ntbAmount.Text.ToString()));
+                FillGridWithdrawal();
+            }
+            else
+            {
+                MessageBox.Show("Not enough money in your account");
+                Close();
+            }
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -133,11 +142,20 @@ namespace BankSystem
 
         private void btnTransaction_Click(object sender, EventArgs e)
         {
-            _logicTransaction.Transaction(accountId, int.Parse(dgwRecepient.Rows[0].Cells[0].Value.ToString()), decimal.Parse(ntbAmount.Text), txtVariable.Text, txtSpecific.Text, txtConst.Text, txtMess.Text);
-            _logicTransaction.TransactionSender(accountId, decimal.Parse(ntbAmount.Text));
-            _logicTransaction.TransactionRecepient(int.Parse(dgwRecepient.Rows[0].Cells[0].Value.ToString()), decimal.Parse(ntbAmount.Text));
-            FillGridRecepient();
-            FillGridSender();
+            if (_logicManagment.MaxAmounth(_accountId) >= decimal.Parse(ntbAmount.Text.ToString()))
+            {
+                _logicTransaction.Transaction(_accountId, int.Parse(dgwRecepient.Rows[0].Cells[0].Value.ToString()), decimal.Parse(ntbAmount.Text), txtVariable.Text, txtSpecific.Text, txtConst.Text, txtMess.Text);
+                _logicTransaction.TransactionSender(_accountId, decimal.Parse(ntbAmount.Text));
+                _logicTransaction.TransactionRecepient(int.Parse(dgwRecepient.Rows[0].Cells[0].Value.ToString()), decimal.Parse(ntbAmount.Text));
+                FillGridRecepient();
+                FillGridSender();
+            }
+            else
+            {
+                MessageBox.Show("Not enough money in your account");
+                Close();
+            }
+
         }
     }
 }

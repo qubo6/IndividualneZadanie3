@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class RepositoryAccount
+    public class RepositoryAccount : RepositoryBase
     {
-        const string connString = @"SERVER = TRANSFORMER2\SQLEXPRESS2016; DATABASE = ISLAMBANK; Trusted_Connection = true ";
-        //const string connString = @"SERVER = KUBO\SQLEXPRESS; DATABASE = ISLAMBANK; Trusted_Connection = true ";
+        
+
         public bool AddAccount(ModelAccounts modelAccounts, int clientId)
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(connString))
+                using (SqlConnection connection = new SqlConnection(base.connString))
                 {
                     connection.Open();
                     using (SqlCommand command = connection.CreateCommand())

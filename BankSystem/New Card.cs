@@ -27,7 +27,7 @@ namespace BankSystem
         {
             newCard = new LogicCard().NewCard();
             //MessageBox.Show(newCard.Validity_from.ToString() + ' '+ newCard.Validity_until.ToString() + ' '+ newCard.CardNumber.ToString());
-            newCard.Pin = (txtPin.Text).ToCharArray();
+            newCard.Pin = (txtPin.Text);
             logicCard.CreateCard(newCard, accountId);
             Close();
         }

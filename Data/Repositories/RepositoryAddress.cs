@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class RepositoryAddress
+    public class RepositoryAddress:RepositoryBase
     {
-        const string connString = @"SERVER = TRANSFORMER2\SQLEXPRESS2016; DATABASE = ISLAMBANK; Trusted_Connection = true ";
+        //const string connString = @"SERVER = TRANSFORMER2\SQLEXPRESS2016; DATABASE = ISLAMBANK; Trusted_Connection = true ";
         //const string connString = @"SERVER = KUBO\SQLEXPRESS; DATABASE = ISLAMBANK; Trusted_Connection = true ";
         public int AddAddress(ModelAddress modelAddress)
         {

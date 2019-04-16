@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class RepositoryCard
+    public class RepositoryCard:RepositoryBase
     {
-        const string connString = @"SERVER = TRANSFORMER2\SQLEXPRESS2016; DATABASE = ISLAMBANK; Trusted_Connection = true ";
+        //const string connString = @"SERVER = TRANSFORMER2\SQLEXPRESS2016; DATABASE = ISLAMBANK; Trusted_Connection = true ";
         //const string connString = @"SERVER = KUBO\SQLEXPRESS; DATABASE = ISLAMBANK; Trusted_Connection = true ";
         public bool AddCard(ModelCard modelCard, int accountId)
         {
@@ -67,23 +67,14 @@ namespace Data.Repositories
                                     {
                                         if (!reader.GetBoolean(5))
                                         {
-                                            return true;
+                                            if (reader.GetDateTime(4)>=DateTime.Now)
+                                            {
+                                                return true;
+                                            }
                                         }
-                                        else
-                                        {
-                                            return false;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        return false;
-                                    }
-                                }
-                                else
-                                {
-                                    return false;
-                                }
 
+                                    }
+                                }
                             }
                         }
 

@@ -21,7 +21,7 @@ namespace TransformerBank
         private void btnLog_Click(object sender, EventArgs e)
         {
             LogicLogin logicLogin = new LogicLogin();
-            if (logicLogin.CheckinCard(int.Parse(txtCardId.Text), txtPin.Text))
+            if (logicLogin.CheckinCard(int.Parse(txtCardId.Text), txtPin.Text.ToString()))
             {
                 MessageBox.Show("Login is OK");
                 count = 0;
@@ -29,8 +29,7 @@ namespace TransformerBank
                 using (frmISLAM_ATM newForm = new frmISLAM_ATM(int.Parse(txtCardId.Text)))
                 {
                     newForm.ShowDialog();
-                }
-                
+                }                
             }
             else
             {
